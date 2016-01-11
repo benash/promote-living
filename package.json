@@ -6,16 +6,19 @@
     "type": "git",
     "url": "https://github.com/benash/promote-living.git"
   },
+  "engines": {
+    "node": "5.4.0"
+  },
   "scripts": {
     "postinstall": "gulp"
   },
   "dependencies": {
-    "babel-preset-react": "^6.3.13",
-    "babelify": "^7.2.0",
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6",
-    "browserify": "^13.0.0",
-    "gulp": "^3.9.0",
-    "vinyl-source-stream": "^1.1.0"
+    "babel-preset-react": "6.3.13",
+    "babelify": "7.2.0",
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "browserify": "13.0.0",
+    "gulp": "3.9.0",
+    "vinyl-source-stream": "1.1.0"
   }
 }

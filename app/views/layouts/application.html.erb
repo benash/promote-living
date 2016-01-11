@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>PromoteLiving</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <link href="<%= gulp_asset_path('bundle.css') %>" media="screen" rel="stylesheet" />
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <%= yield %>
 
-  <script src="assets/bundle.js"></script>
+  <script src="<%= gulp_asset_path('bundle.js') %>"></script>
 </body>
 </html>
