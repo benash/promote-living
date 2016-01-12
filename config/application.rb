@@ -31,5 +31,12 @@ module PromoteLiving
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.GULP_CONFIG = JSON.parse(File.read('gulpfile.js/config.json'))
+    config.REV_MANIFEST_PATH = File.join(config.GULP_CONFIG['root']['dest'], 'rev-manifest.json')
+
+    if File.exist?(config.REV_MANIFEST_PATH)
+      config.REV_MANIFEST = JSON.parse(File.read(config.REV_MANIFEST_PATH))
+    end
   end
 end

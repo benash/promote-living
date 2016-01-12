@@ -19,4 +19,6 @@
 .idea/
 node_modules/
 bower_components/
-public/assets/
+public/javascripts/
+public/stylesheets/
+.byebug_history

@@ -1,0 +1,19 @@
+{
+  "name": "promote-living",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Ben Nash <benash@umich.edu>"
+  ],
+  "license": "UNLICENSED",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
