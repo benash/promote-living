@@ -9,7 +9,7 @@ module GulpAssetHelper
       rev_manifest = JSON.parse(File.read(config.REV_MANIFEST_PATH)) if File.exist?(config.REV_MANIFEST_PATH)
     # In production, use the manifest cached in initializers/gulp.rb
     else
-      rev_manifest = config.REV_MANIFEST if defined?(config.REV_MANIFEST)
+      rev_manifest = config.REV_MANIFEST unless config.REV_MANIFEST.nil?
     end
 
     asset_path = type ? File.join(config.GULP_CONFIG['tasks'][type]['dest'], path) : path
