@@ -30,9 +30,9 @@
       "autoprefixer": {
         "browsers": ["last 3 version"]
       },
-      "sass": {
+      "less": {
       },
-      "extensions": ["sass", "scss", "css"]
+      "extensions": ["less", "css"]
     },
 
     "html": {

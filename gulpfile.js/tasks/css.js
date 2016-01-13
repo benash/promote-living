@@ -3,7 +3,7 @@ if(!config.tasks.css) return
 
 var gulp         = require('gulp')
 var browserSync  = require('browser-sync')
-var sass         = require('gulp-sass')
+var less         = require('gulp-less')
 var sourcemaps   = require('gulp-sourcemaps')
 var handleErrors = require('../lib/handleErrors')
 var autoprefixer = require('gulp-autoprefixer')
@@ -17,7 +17,7 @@ var paths = {
 var cssTask = function () {
   return gulp.src(paths.src)
     .pipe(sourcemaps.init())
-    .pipe(sass(config.tasks.css.sass))
+    .pipe(less(config.tasks.css.less))
     .on('error', handleErrors)
     .pipe(autoprefixer(config.tasks.css.autoprefixer))
     .pipe(sourcemaps.write())

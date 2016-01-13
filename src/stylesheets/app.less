@@ -1,0 +1,29 @@
+@green: #1b6611;
+@light-green: #1fc249;
+@light-blue: #8eb4e3;
+@blue: #0c182b;
+@red: #d32f23;
+
+
+body {
+
+  background-image: url('../images/grocery-store.png');
+  background-size: cover;
+
+  .welcome.container {
+    position: absolute;
+    right: 20%;
+    bottom: 20%;
+
+    .segment {
+
+      background-color: @green;
+      &.first {
+        margin-right: 10em;
+      }
+      &.second {
+        float: right;
+      }
+    }
+  }
+}
