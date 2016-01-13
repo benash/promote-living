@@ -10,7 +10,7 @@
     "node": "5.4.0"
   },
   "scripts": {
-    "postinstall": "gulp"
+    "postinstall": "if test \"$NODE_ENV\" = 'production'; then gulp production; fi"
   },
   "dependencies": {
     "babel-core": "6.4.0",
