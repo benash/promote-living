@@ -10,19 +10,50 @@ body {
   background-image: url('../images/grocery-store.png');
   background-size: cover;
 
-  .welcome.container {
-    position: absolute;
-    right: 20%;
-    bottom: 20%;
+  .login.form {
+    float: right;
 
-    .segment {
 
-      background-color: @green;
-      &.first {
-        margin-right: 10em;
+    .inline.fields {
+      .field {
+        label {
+          color: white;
+        }
       }
-      &.second {
-        float: right;
+
+      margin: 0;
+    }
+
+    .primary.button {
+      background-color: @green;
+      color: white;
+      &:hover {
+        background-color: lighten(@green, 10%);
+      }
+    }
+  }
+
+  .splash {
+
+    .inverted.segment {
+      background-color: @blue;
+    }
+
+    .welcome.container {
+      position: absolute;
+      right: 20%;
+      bottom: 20%;
+
+      .segment {
+
+        background-color: @green;
+
+        &.first {
+          margin-right: 10em;
+        }
+        &.second {
+          float: right;
+        }
       }
     }
   }

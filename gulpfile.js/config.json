@@ -19,7 +19,7 @@
       "dest": "javascripts",
       "extractSharedJs": false,
       "entries": {
-        "app": ["./app.js"]
+        "index": ["./index.js"]
       },
       "extensions": ["js"]
     },

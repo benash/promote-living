@@ -6,10 +6,10 @@
   <link href="<%= gulp_css_path('app.css') %>" media="screen" rel="stylesheet" />
   <%= csrf_meta_tags %>
 </head>
-<body id="content">
+<body>
 
   <%= yield %>
 
-  <script src="<%= gulp_js_path('app.js') %>"></script>
+  <script src="<%= gulp_js_path('index.js') %>"></script>
 </body>
 </html>
