@@ -10,6 +10,11 @@
 
   <%= yield %>
 
-  <script src="<%= gulp_js_path('index.js') %>"></script>
+  <%= javascript_tag do %>
+
+    window.currentUser = <%=raw current_user.to_json %>
+  <% end %>
+
+<script src="<%= gulp_js_path('index.js') %>"></script>
 </body>
 </html>

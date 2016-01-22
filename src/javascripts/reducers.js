@@ -1,8 +1,8 @@
-import { LOGIN_USER, LOGOUT_USER } from './actions'
+import { SUCCEED_LOGIN_USER, LOGOUT_USER } from './actions'
 
 function currentUser(state, action) {
   switch (action.type) {
-    case LOGIN_USER:
+    case SUCCEED_LOGIN_USER:
       const { email } = action.payload
       return {
         email,
@@ -16,6 +16,6 @@ function currentUser(state, action) {
 
 export default function(state = {}, action) {
   return {
-    currentUser: currentUser(state.currentUser, action)
+    currentUser: currentUser(state.currentUser, action),
   }
 }
