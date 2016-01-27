@@ -1,4 +1,4 @@
-import { SUCCEED_LOGIN_USER, LOGOUT_USER } from './actions'
+import { SUCCEED_LOGIN_USER, SUCCEED_LOGOUT_USER } from './actions'
 
 function currentUser(state, action) {
   switch (action.type) {
@@ -7,14 +7,14 @@ function currentUser(state, action) {
       return {
         email,
       }
-    case LOGOUT_USER:
+    case SUCCEED_LOGOUT_USER:
       return null
     default:
       return state
   }
 }
 
-export default function(state = {}, action) {
+export default function(state = { currentUser: window.currentUser }, action) {
   return {
     currentUser: currentUser(state.currentUser, action),
   }

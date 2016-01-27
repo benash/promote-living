@@ -11,8 +11,8 @@
   <%= yield %>
 
   <%= javascript_tag do %>
-
-    window.currentUser = <%=raw current_user.to_json %>
+    window.currentUser = <%=raw UserSerializer.new(current_user).to_json %>.user
+    window.RAILS_ENV = '<%= Rails.env %>'
   <% end %>
 
 <script src="<%= gulp_js_path('index.js') %>"></script>

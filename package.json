@@ -10,9 +10,13 @@
     "node": "5.4.0"
   },
   "scripts": {
-    "postinstall": "if test \"$NODE_ENV\" = 'production'; then gulp production; fi"
+    "postinstall": "if test \"$NODE_ENV\" = 'production'; then gulp production; fi",
+    "unit": "bundle exec rake",
+    "integration": "mocha --compilers js:babel-register src/javascripts/__tests__",
+    "test": "npm run unit && npm run integration"
   },
   "dependencies": {
+    "axios": "0.9.1",
     "babel-core": "6.4.0",
     "babel-loader": "6.2.1",
     "babel-polyfill": "6.3.14",
@@ -49,9 +53,9 @@
     "gulp-uglify": "1.5.1",
     "gulp-watch": "4.3.5",
     "isomorphic-fetch": "2.2.1",
-    "jquery": "2.2.0",
     "morgan": "1.6.1",
     "open": "0.0.5",
+    "qwest": "3.0.0",
     "react": "0.14.6",
     "react-dom": "0.14.6",
     "react-redux": "4.0.6",
@@ -59,9 +63,11 @@
     "redux-logger": "2.3.2",
     "redux-thunk": "1.0.3",
     "require-dir": "0.3.0",
-    "tape": "4.4.0",
     "vinyl-source-stream": "1.1.0",
-    "webpack": "1.12.10",
+    "webpack": "1.12.10"
+  },
+  "devDependencies": {
+    "mocha": "2.3.4",
     "zombie": "4.2.1"
   }
 }

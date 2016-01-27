@@ -8,7 +8,11 @@ import mainReducer from './reducers'
 import App from './app'
 import { el } from './helpers'
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger({
+  predicate: function(getState, action) {
+    return RAILS_ENV === 'development'
+  }
+})
 
 const createStoreWithMiddleware = applyMiddleware(
     thunkMiddleware,

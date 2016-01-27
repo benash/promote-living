@@ -58,8 +58,8 @@ class UserTest < ActiveSupport::TestCase
     it 'authenticates' do
       password = 'abcd1234'
       user = build(:user, password: password)
-      user.authenticate(password).must_be true
-      user.authenticate('abc123').must_be false
+      user.authenticate(password).must_equal user
+      user.authenticate('abc123').must_equal false
     end
   end
 end

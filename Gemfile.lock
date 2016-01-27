@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faradayio/hangar
+  revision: e8bae88430bd6a4e0146a10a6f0192a64c964fc9
+  specs:
+    hangar (0.0.4)
+      database_cleaner
+      rails (>= 4.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +55,7 @@ GEM
     builder (3.2.2)
     byebug (8.2.1)
     concurrent-ruby (1.0.0)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     factory_girl (4.5.0)
@@ -143,6 +152,7 @@ DEPENDENCIES
   byebug
   factory_girl_rails
   faker
+  hangar!
   jbuilder (~> 2.0)
   minitest-reporters
   minitest-spec-rails

@@ -11,6 +11,7 @@ gem 'active_model_serializers'
 group :test do
   gem 'minitest-reporters'
   gem 'minitest-spec-rails'
+  gem 'hangar', git: 'https://github.com/faradayio/hangar'
 end
 
 group :development, :test do

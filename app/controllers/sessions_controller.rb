@@ -11,4 +11,9 @@ class SessionsController < ApplicationController
       head :unauthorized
     end
   end
+
+  def destroy
+    logout
+    head :no_content
+  end
 end
