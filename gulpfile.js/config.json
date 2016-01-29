@@ -14,6 +14,12 @@
       "dest": "./"
     },
 
+    "css": {
+      "src": "stylesheets",
+      "dest": "stylesheets",
+      "extensions": ["css", "scss"]
+    },
+
     "js": {
       "src": "javascripts",
       "dest": "javascripts",
@@ -22,17 +28,6 @@
         "index": ["./index.js"]
       },
       "extensions": ["js"]
-    },
-
-    "css": {
-      "src": "stylesheets",
-      "dest": "stylesheets",
-      "autoprefixer": {
-        "browsers": ["last 3 version"]
-      },
-      "less": {
-      },
-      "extensions": ["less", "css"]
     },
 
     "html": {
@@ -50,25 +45,6 @@
       "src": "images",
       "dest": "images",
       "extensions": ["jpg", "png", "svg", "gif"]
-    },
-
-    "fonts": {
-      "src": "fonts",
-      "dest": "fonts",
-      "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
-    },
-
-    "iconFont": {
-      "src": "icons",
-      "dest": "fonts",
-      "sassDest": "generated",
-      "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
-    },
-
-    "svgSprite": {
-      "src": "sprites",
-      "dest": "images",
-      "extensions": ["svg"]
     }
   }
 }

@@ -4,16 +4,20 @@ var path   = require('path')
 var watch  = require('gulp-watch')
 
 var watchTask = function() {
-  var watchableTasks = ['fonts', 'iconFont', 'images', 'svgSprite','html', 'css']
+  var watchableTasks = ['images', 'css']
 
-  watchableTasks.forEach(function(taskName) {
-    var task = config.tasks[taskName]
-    if(task) {
-      var glob = path.join(config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}')
-      watch(glob, function() {
-       require('./' + taskName)()
-      })
-    }
+  var glob = path.join(config.root.src, config.tasks.images.src, '**/*.{' + config.tasks.images.extensions.join(',') + '}')
+  watch(glob, function() {
+    require('./images')()
+  })
+
+  glob = path.join(config.root.src, config.tasks.css.src, '**/*.{' + config.tasks.css.extensions.join(',') + '}')
+  watch(glob, function() {
+    require('./css')()
+  })
+
+  watch('.stylelintrc.json', function() {
+    require('./css')()
   })
 }
 

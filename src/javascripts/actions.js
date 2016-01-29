@@ -8,6 +8,8 @@ export const INIT_LOGOUT_USER = 'INIT_LOGOUT_USER'
 export const SUCCEED_LOGOUT_USER = 'SUCCEED_LOGOUT_USER'
 export const FAIL_LOGOUT_USER = 'FAIL_LOGOUT_USER'
 
+export const SET_MAIN_VIEW_ACTION = 'SET_MAIN_VIEW_ACTION'
+
 function simpleAction(type, payload) {
   return {
     type,
@@ -44,4 +46,8 @@ export function logoutUserAction() {
         .then(json => dispatch(simpleAction(SUCCEED_LOGOUT_USER)))
         .catch(error => dispatch(simpleAction(FAIL_LOGOUT_USER, { error })))
   }
+}
+
+export function setMainViewAction(View) {
+  return simpleAction(SET_MAIN_VIEW_ACTION, View)
 }

@@ -1,8 +1,8 @@
 import { Component } from 'react'
-import { div, form, input, button, h1, el } from './helpers'
+import { div, form, input, label, button, h1, h4, el, a } from './helpers'
 
 class LoginFormView extends Component {
-  handleSubmission(e) {
+  login(e) {
     e.preventDefault()
     var email = this.refs.email.value
     var password = this.refs.password.value
@@ -10,21 +10,28 @@ class LoginFormView extends Component {
     this.props.loginUser(email, password)
   }
 
+  showSignupForm(e) {
+    e.preventDefault()
+
+    this.props.showSignupForm()
+  }
+
   render() {
     return (
-        form({ className: 'ui login form inverted segment', onSubmit: (e) => this.handleSubmission(e) },
+        form({ className: 'ui login form inverted segment', onSubmit: (e) => this.login(e) },
             div({ className: 'fields' },
                 div({ className: 'field' },
                     input({ type: 'email', ref: 'email', placeholder: 'Email' })),
                 div({ className: 'field' },
                     input({ type: 'password', ref: 'password', placeholder: 'Password' })),
                 div({ className: 'field' },
-                    button({ className: 'ui primary button', type: 'submit' }, 'Login'))))
+                    button({ className: 'ui primary button', type: 'submit' }, 'Login'))),
+            a({ href: '#', onClick: (e) => this.showSignupForm(e) }, 'Individual signup'))
     )
   }
 }
 
-class WelcomeView extends Component {
+export class WelcomeView extends Component {
   render() {
     return (
         div({ className: 'welcome container' },
@@ -35,13 +42,34 @@ class WelcomeView extends Component {
   }
 }
 
+export class SignupView extends Component {
+  render() {
+    return (
+      div({ className: 'ui inverted segment', id: 'signup' },
+          form({ className: 'ui form' },
+              div({ className: 'field' },
+                  div({ className: 'two fields'},
+                      div({ className: 'field' },
+                          input({ type: 'text', name: 'shipping[first-name]', placeholder: 'First Name' })),
+                      div({ className: 'field' },
+                          input({ type: 'text', name: 'shipping[last-name]', placeholder: 'Last Name' })))),
+              div({ className: 'field' },
+                  div({ className: 'fields'},
+                      div({ className: 'twelve wide field' },
+                          input({ type: 'text', name: 'shipping[address]', placeholder: 'Street Address' })),
+                      div({ className: 'four wide field' },
+                          input({ type: 'text', name: 'shipping[address-2]', placeholder: 'Apt #' }))))))
+    )
+  }
+}
+
 export class LoggedOutView extends Component {
   render() {
-    const { loginUser } = this.props
+    const { loginUser, showSignupForm, mainView } = this.props
 
     return (
         div({ className: 'splash page' },
-            el(LoginFormView, { loginUser }),
-            el(WelcomeView)))
+            el(LoginFormView, { loginUser, showSignupForm }),
+            el(mainView)))
   }
 }

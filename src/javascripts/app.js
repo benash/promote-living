@@ -1,26 +1,28 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { loginUserAction, logoutUserAction } from './actions'
-import { LoggedInView, LoggedOutView } from 'views'
+import { loginUserAction, logoutUserAction, setMainViewAction } from './actions'
+import { LoggedInView, LoggedOutView, SignupView } from 'views'
 import { el } from './views/helpers'
 
 class App extends Component {
   render() {
-    const { dispatch, currentUser, isLoggedIn } = this.props
+    const { dispatch, currentUser, isLoggedIn, mainView } = this.props
     const logoutUser = () => dispatch(logoutUserAction())
     const loginUser = (email, password) => dispatch(loginUserAction(email, password))
+    const showSignupForm = () => dispatch(setMainViewAction(SignupView))
 
     return isLoggedIn()
         ? el(LoggedInView, { currentUser, logoutUser })
-        : el(LoggedOutView, { loginUser })
+        : el(LoggedOutView, { loginUser, showSignupForm, mainView })
   }
 }
 
-let select = (state) => ({
-  currentUser: state.currentUser,
+let select = ({ currentUser, mainView }) => ({
+  currentUser,
+  mainView,
   isLoggedIn: function() {
-    return !!state.currentUser
+    return !!currentUser
   }
 })
 
