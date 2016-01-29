@@ -1,37 +1,40 @@
-import { create, Browser } from './helpers'
-
-function containsString(subStr, str) {
-  return ~str.indexOf(subStr)
-}
+import { create, deleteAll, Browser, FrontPage } from './test-helper'
+var assert = require('assert')
 
 describe('Basic', function() {
-  it('shows the homepage', function(done) {
-    var browser = new Browser()
-    browser.visit('/', () => {
-      browser.assert.text('title', 'PromoteLiving')
-      browser.assert.containsText('body', 'Healthy Rewards')
-      done()
-    })
+  var page
+
+  before(deleteAll)
+  before(function() {
+    page = new FrontPage(new Browser())
   })
 
-  describe('login', function(done) {
-    const browser = new Browser()
-    var user = null
+  it('shows the homepage', function() {
+    return page.visit()
+        .then(() => assert(page.isLoggedOut()))
+  })
 
-    before(function(done) {
+  describe('Auth', function() {
+    var user
 
-      create('user').then((u) => {
-        user = u
-        browser.visit('/', function() {
-          browser.fill('input[type=email]', user.email)
-          browser.fill('input[type=password]', 'abcd1234')
-          browser.pressButton('button', done)
-        })
-      })
+    before(function() {
+      return create('user')
+          .then((u) => user = u)
+          .then(() => page.visit())
+          .then(() => page.loginUser(user))
     })
 
     it('logs in a user', function() {
-      browser.assert.text('label.email', user.email)
+      assert(page.isLoggedIn())
+      return page.visit()
+          .then(() => assert(page.isLoggedIn()))
+    })
+
+    it('logs out a user', function() {
+      return page.logoutUser()
+          .then(() => assert(page.isLoggedOut()))
+          .then(() => page.visit())
+          .then(() => assert(page.isLoggedOut()))
     })
   })
 })

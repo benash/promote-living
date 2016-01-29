@@ -12,7 +12,10 @@
   "scripts": {
     "postinstall": "if test \"$NODE_ENV\" = 'production'; then gulp production; fi",
     "unit": "bundle exec rake",
-    "integration": "mocha --compilers js:babel-register src/javascripts/__tests__",
+    "start-test-server": "bundle exec rails server --daemon --environment test --port 3333 --pid `pwd`/tmp/pids/test-server.pid",
+    "kill-test-server": "kill `cat tmp/pids/test-server.pid`",
+    "launch-integration-tests": "mocha --compilers js:babel-register src/javascripts/__tests__ || true",
+    "integration-tests": "npm run start-test-server && npm run launch-integration-tests && npm run kill-test-server",
     "test": "npm run unit && npm run integration"
   },
   "dependencies": {
