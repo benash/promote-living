@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { render } from 'react-dom'
@@ -6,7 +7,7 @@ import { Provider } from 'react-redux'
 
 import mainReducer from './reducers'
 import App from './app'
-import { el } from './helpers'
+import { el } from './views/helpers'
 
 const loggerMiddleware = createLogger({
   predicate: function(getState, action) {
