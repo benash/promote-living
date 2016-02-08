@@ -68,7 +68,9 @@ export class SignupView extends Component {
   }
 
   handleChange(e) {
-
+    const { name, value } = e.target
+    if (this.state.validity[name] === false)
+      this.validate(name, value)
   }
 
   validate(name, value) {
