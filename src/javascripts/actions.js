@@ -4,6 +4,10 @@ export const INIT_LOGIN_USER = 'INIT_LOGIN_USER'
 export const SUCCEED_LOGIN_USER = 'SUCCEED_LOGIN_USER'
 export const FAIL_LOGIN_USER = 'FAIL_LOGIN_USER'
 
+export const INIT_SIGNUP_USER = 'INIT_SIGNUP_USER'
+export const SUCCEED_SIGNUP_USER = 'SUCCEED_SIGNUP_USER'
+export const FAIL_SIGNUP_USER = 'FAIL_SIGNUP_USER'
+
 export const INIT_LOGOUT_USER = 'INIT_LOGOUT_USER'
 export const SUCCEED_LOGOUT_USER = 'SUCCEED_LOGOUT_USER'
 export const FAIL_LOGOUT_USER = 'FAIL_LOGOUT_USER'
@@ -34,6 +38,17 @@ export function loginUserAction(email, password) {
     return authJson('post', '/login', { session: { email, password, } })
         .then(json => dispatch(simpleAction(SUCCEED_LOGIN_USER, { email })))
         .catch(error => dispatch(simpleAction(FAIL_LOGIN_USER, { error })))
+  }
+}
+
+export function signupUserAction(attrs) {
+  return dispatch => {
+
+    dispatch(simpleAction(INIT_SIGNUP_USER))
+
+    return authJson('post', '/users', { user: attrs })
+        .then(json => dispatch(simpleAction(SUCCEED_SIGNUP_USER, json)))
+        .catch(error => dispatch(simpleAction(FAIL_SIGNUP_USER, { error })))
   }
 }
 

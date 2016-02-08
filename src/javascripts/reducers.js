@@ -1,5 +1,5 @@
 import { SUCCEED_LOGIN_USER, SUCCEED_LOGOUT_USER, SET_MAIN_VIEW_ACTION } from './actions'
-import { WelcomeView } from 'views/logged-out-view'
+import { LoggedInView, SplashView } from 'views'
 
 function currentUser(state, action) {
   switch (action.type) {
@@ -24,9 +24,13 @@ function mainView(state, action) {
   }
 }
 
+function isLoggedIn(user) {
+  return !!user
+}
+
 const initialState = {
   currentUser: window.currentUser,
-  mainView: WelcomeView,
+  mainView: isLoggedIn(window.currentUser) ? LoggedInView : SplashView,
 }
 
 export default function(state = initialState, action) {
