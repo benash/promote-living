@@ -30,12 +30,24 @@ button {
   @mixin rounded;
 }
 
+.input-container {
+  position: relative;
+
+  .popover {
+    position: absolute;
+  }
+}
 input {
   line-height: 1.21em;
   padding: 0.67em 1em;
   margin-right: 0.5em;
   border-width: 0.14em;
   border-style: solid;
+
+  &:invalid {
+    border-color: $green;
+    outline-color: $green;
+  }
 
   &[data-valid=false] {
     border-color: $red;
